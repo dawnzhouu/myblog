@@ -1,0 +1,46 @@
+<div class="row" data-masonry='{"percentPosition": true}'>
+  {{ $page := .Get "page" }}
+  {{ $pageObject := .Site.GetPage (printf "%s/%s" .Page.Section $page) }}
+  {{ with $pageObject }}
+
+    {{ $images := .Resources.ByType "image" }}
+    {{ range $images }}
+
+    {{ $image := .Resize "960x webp" }}
+    {{ $img_tmb := .Resize "400x webp" }}
+  
+    <div class="col-12 col-md-4 col-lg-3 mb-4">
+      <div class="card-columns">
+        <div class="card-container">
+          <div class="card no-border image-zoom-wrapper">
+            <a href="{{ $image.RelPermalink }}"
+              data-fancybox="gallery">
+              <img class="card-img zoom-image" src="{{ $img_tmb.RelPermalink }}" alt="Gallery">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  {{ else }}
+    <p>No images found in this gallery.</p>
+  {{ end }}
+</div>
+
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script>
+  window.addEventListener('load', function() {
+    var grid = document.querySelector('.row');
+
+    // Initialize Masonry
+    var msnry = new Masonry(grid, {
+      itemSelector: '.col-12',
+      percentPosition: true,
+    });
+
+    // Use imagesLoaded to ensure Masonry only runs after images have loaded
+    imagesLoaded(grid, function() {
+      msnry.layout(); // Recalculate layout once images are fully loaded
+    });
+  });
+</script>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{ or site.Language.LanguageCode }}" dir="{{ or site.Language.LanguageDirection `ltr` }}">
+
+{{ partial "head.html" . }}
+{{ partial "google_analytics.html" . }}
+
+<body>
+
+  {{ partial "header.html" . }}
+
+  {{ block "main" . }}{{ end }}
+
+  {{ if and .Site.Params.gmaps_url .Params.gmaps }}
+    {{ partial "embedgmaps.html" .Site.Params.gmaps_url }}
+  {{ end }}
+
+  {{ partial "footer.html" . }}
+
+</body>
+
+</html>

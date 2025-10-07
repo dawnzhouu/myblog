@@ -1,0 +1,22 @@
+name = 'Air'
+license = 'MIT'
+licenselink = 'https://github.com/owner/repo/LICENSE'
+description = 'Hugo Air Theme'
+version = 'v0.0.19'
+screenshot = '/images/screenshot.jpg/'
+
+# The home page of the theme, where the source can be found
+homepage = 'https://github.com/francoiducat/hugo-air'
+
+# Demo of the theme
+demosite = 'https://francoiducat.github.io/hugo-air-demo'
+
+# Taxonomy terms
+tags = ['gallery', 'blog', 'company', 'website', 'portfolio']
+features = ['responsive', 'images gallery', 'page bundle gallery', 'masonry image gallery', 'instagram image gallery', 'google maps', 'bootstrap', 'shortcodes']
+min_version = '0.100.0'
+
+# If the theme has a single author
+[author]
+  name = 'francoiducat'
+  homepage = 'https://github.com/francoiducat/hugo-air'

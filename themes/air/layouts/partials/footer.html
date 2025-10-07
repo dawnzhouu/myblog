@@ -1,0 +1,48 @@
+<footer>
+  <!-- Footer Navigation Bar -->
+  <div class="pt-3 bg-main-color text-white">
+    <div class="row">
+      <div class="text-center">
+        <ul class="list-unstyled">
+          <!-- Dynamic Footer Menu From config.yml file -->
+          {{ range .Site.Menus.footer }}
+          <li class="d-inline-block mx-2">
+            <a class="nav-link" href="{{ .URL }}" target="{{ .Params.target }}">{{ .Name }}</a>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Footer Section -->
+
+  <div class="container mt-2 pb-1 bg-white">
+    <div class="row">
+      <div class="text-center">
+        <p class="mt-1 mb-0">{{ .Site.Params.footer }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-2 pb-1 bg-white ">
+    <div class="row">
+      <div class="text-center">
+        <p class="mt-1 mb-0" style="font-size:12px">Built with ❤️ with <a href="https://gohugo.io/"
+            target="_blank">Hugo</a> by <a href="{{ .Site.Params.author.siteUrl }}" target="_blank">{{
+            .Site.Params.author.name}}</a>.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" async></script>
+
+<!-- Header Image JS -->
+<script src="{{ "js/header-image.js" | relURL }}"></script>
+
+<!-- Masonry JS -->
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+
+<!-- FancyBox JS -->
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js" async></script>

@@ -1,0 +1,55 @@
+<div class="row" data-masonry='{"percentPosition": true}'>
+  {{ $images := .Resources.ByType "image" }}
+  {{ range $images }}
+
+  {{ $image := .Resize "960x webp" }}
+  {{ $img_tmb := .Resize "400x webp" }}
+
+  <div class="col-12 col-md-4 col-lg-3 mb-4">
+    <div class="card-columns">
+      <div class="card-container">
+        <div class="card no-border image-zoom-wrapper">
+          <a href="{{ $image.RelPermalink }}"
+            data-fancybox="gallery">
+            <img class="card-img zoom-image lazy" 
+                 data-src="{{ $img_tmb.RelPermalink }}" 
+                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
+                 alt="Gallery">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ end }}
+</div>
+
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
+<script>
+  // Initialize LazyLoad
+  var lazyLoadInstance = new LazyLoad({
+    elements_selector: ".lazy",
+    threshold: 300, // 提前300px开始加载
+    callback_loaded: function(el) {
+      // 图片加载完成后重新计算Masonry布局
+      if (window.msnry) {
+        window.msnry.layout();
+      }
+    }
+  });
+
+  window.addEventListener('load', function() {
+    var grid = document.querySelector('.row');
+
+    // Initialize Masonry
+    window.msnry = new Masonry(grid, {
+      itemSelector: '.col-12',
+      percentPosition: true,
+    });
+
+    // Use imagesLoaded to ensure Masonry only runs after images have loaded
+    imagesLoaded(grid, function() {
+      window.msnry.layout(); // Recalculate layout once images are fully loaded
+    });
+  });
+</script>

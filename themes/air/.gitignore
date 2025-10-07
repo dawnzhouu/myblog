@@ -1,0 +1,40 @@
+# Hugo build directory
+/public/
+
+# Hugo resources directory (generated during build)
+/resources/
+
+# Hugo cache (this can be useful to ignore, especially if it's large)
+.cache/
+
+# Hugo specific lock file
+.hugo_build.lock
+
+# Node.js dependencies (if you're using npm/yarn)
+node_modules/
+
+# IDE and editor-specific files
+.vscode/
+.idea/
+*.swp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# OS generated files
+*.log
+*.bak
+*.tmp
+
+# Hugo config file backups
+config.toml~
+config.yaml~
+config.json~
+
+# Backup files
+*~
+
+.env
+.DS_Store
+static/.DS_Store

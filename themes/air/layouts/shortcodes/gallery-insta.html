@@ -1,0 +1,37 @@
+<div class="row">
+  {{ $page := .Get "page" }}
+  {{ $pageObject := .Site.GetPage (printf "%s/%s" .Page.Section $page) }}
+  {{ with $pageObject.Resources }}
+  {{ $images := .ByType "image" }}
+  {{ range $image := $images }}
+
+  {{- $image := $image.Resize "960x webp q75" -}}
+  {{- $img_tmb := "" -}}
+
+  {{- /* if width is greater than height */ -}}
+  {{- if gt $image.Width $image.Height -}}
+  {{- $image := $image.Fill (printf "%dx%d" $image.Height $image.Height) -}}
+  {{- $img_tmb = $image.Resize "400x webp q75" -}}
+
+  {{- else -}}
+  {{- /* if height is greater than width */ -}}
+  {{- $image = $image.Fill (printf "%dx%d" $image.Width $image.Width) -}}
+  {{- $img_tmb = $image.Resize "400x webp q75" -}}
+  {{- end -}}
+
+  <div class="col-6 col-md-4 col-xl-3 pb-3 px-2">
+    <a href="{{ $image.RelPermalink }}" data-fancybox="gallery">
+      <div class="image-zoom-wrapper">
+        <img src="{{ $img_tmb.RelPermalink }}" alt="Gallery Image" class="img-fluid zoom-image"
+          width="{{ $img_tmb.Width }}" height="{{ $img_tmb.Height }}">
+      </div>
+    </a>
+  </div>
+  {{ end }}
+
+
+  {{ else }}
+  <p>No images found in this gallery.</p>
+  {{ end }}
+
+</div>

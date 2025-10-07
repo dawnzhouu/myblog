@@ -1,0 +1,48 @@
+baseURL: "https://dawnzhouu.github.io/myblog"
+languageCode: zh-cn
+title: 你好
+theme: air
+
+# 支持多语言
+defaultContentLanguage: zh-cn
+
+params:
+  author:
+    name: Dawn
+    siteUrl: https://dawnzhouu.github.io/myblog/
+  # 主题色
+  mainColor: "#2563eb"
+  # 页脚信息
+  footer: "© 2025 Dawn - Website"
+
+menu:
+  main:
+    - name: 关于我
+      url: /about/
+      weight: 10
+    - name: 作品集
+      url: /portfolio/
+      weight: 20
+    - name: 图
+      url: /portfolio/visual/
+      parent: 作品集
+      weight: 21
+    - name: 文
+      url: /portfolio/writing/
+      parent: 作品集
+      weight: 22
+    - name: 视频
+      url: /portfolio/video/
+      parent: 作品集
+      weight: 23
+    - name: 运营案例
+      url: /operation-cases/
+      weight: 30
+
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+    renderer:
+      unsafe: true

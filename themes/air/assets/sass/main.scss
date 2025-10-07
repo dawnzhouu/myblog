@@ -1,0 +1,654 @@
+body {
+  background-image: url('/img/portfolio.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+/*
+=======================================================
+=                   CSS Variables                     =
+=======================================================
+*/
+
+/* 
+Main color for the website
+It can be overridden in the config file by setting "Params.mainColor" to any color value
+*/
+:root {
+  --main-color: #035c8c; /* default color */
+}
+
+/*
+=======================================================
+*                   HTML elements                     *
+=======================================================
+*/
+
+section div h1 {
+  color:var(--main-color);
+}
+
+section.odd p,
+section.odd h1 {
+  text-align: right;
+  color: #fff;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+  width: 90%; /* Responsive width */
+}
+
+/* Base Triangle Arrow */
+section.odd::after {
+  content: "";
+  position: absolute;
+  bottom: -40px; /* Space below the section */
+  width: 0;
+  height: 0;
+  border-left: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-top: 60px solid var(--main-color); /* Triangle shape */
+}
+
+/* Left Triangle - Aligns Exactly with Left Edge of .container */
+section.odd-left::after {
+  left: calc((100% - min(960px, 90vw)) / 2); /* Left edge of .container */
+  transform: translateX(0); /* No additional shifting */
+}
+
+/* Right Triangle - Aligns Exactly with Right Edge of .container */
+section.odd-right::after {
+  left: calc((100% - min(960px, 90vw)) / 2 + min(960px, 90vw)); /* Right edge of .container */
+  transform: translateX(-100%); /* Aligns correctly */
+}
+
+/* Ensure Sections Have Proper Positioning */
+section.odd {
+  position: relative;
+  background-color: var(--main-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .container {
+    width: 95%;
+  }
+
+  section.odd-left::after {
+    left: calc((100% - min(960px, 95vw)) / 2);
+  }
+
+  section.odd-right::after {
+    left: calc((100% - min(960px, 95vw)) / 2 + min(960px, 95vw));
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+
+  section.odd-left::after {
+    left: calc((100% - 100vw) / 2);
+  }
+
+  section.odd-right::after {
+    left: calc((100% - 100vw) / 2 + 100vw);
+  }
+}
+
+
+h1,
+h2,
+h3 {
+  color: var(--main-color);
+}
+
+a {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+p {
+  text-align: justify;
+}
+
+/*
+=======================================================
+*                   Custom Styles                     *
+=======================================================
+*/
+
+.text-center p {
+  text-align: center;
+}
+
+.bg-main-color {
+  background-color: var(--main-color);
+}
+
+.main-color {
+  color: var(--main-color);
+}
+
+.btn.main-color {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.catchline {
+  font-style: italic;
+}
+
+.no-border {
+  border: none;
+}
+
+.card-img {
+  border: none;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.75);
+}
+
+/*
+=======================================================
+*                Navbar, Menu Links                   *
+=======================================================
+*/
+
+.navbar {
+  --bs-navbar-padding-y: 0rem;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #fff !important;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  transition: color 0.3s ease, border-top 0.3s ease;
+}
+
+/* Active and Hover State */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link.active {
+  color: rgba(255, 255, 255, 1) !important;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure the navbar toggler is visible on mobile */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 991px) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+  }
+
+  .navbar-nav {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.navbar-brand:focus,
+.navbar-brand:hover,
+.nav-link:hover {
+  color: #fff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler,
+.navbar-toggler:hover,
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  border: none;
+  color: transparent;
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+  .navbar ul li a {
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    transition: border-top 0.3s ease;
+  }
+
+  /* Apply the white border to both hovered and active menu items */
+  .navbar ul li a:hover,
+  .navbar ul li a.active {
+    border-top: 5px solid #fff;
+    border-bottom: 5px solid transparent;
+  }
+}
+
+/* Adjust margin for menu links */
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    margin-right: 2rem;
+  }
+}
+
+/*
+=======================================================
+*                       SubMenu                       *
+=======================================================
+*/
+
+
+/* Ensure submenu is hidden by default */
+.submenu {
+  display: none;
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.2); 
+  backdrop-filter: blur(3px); 
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5); 
+  z-index: 1000;
+  border-radius: 5px;
+  min-width: 150px; 
+  white-space: nowrap; 
+}
+
+/* Show the submenu when hovering over the parent menu item */
+.nav-item:hover .submenu {
+  display: block;
+}
+
+/* Mobile-specific submenu behavior */
+@media (max-width: 991px) {
+  /* Hide submenu on mobile screens */
+  .submenu {
+    display: none !important;
+  }
+}
+
+/* Style the submenu items */
+.submenu-item {
+  display: block; /* Ensure the submenu item takes full width */
+  padding: 5px 12px; /* Smaller padding */
+  font-size: 14px; /* Smaller font size */
+  transition: background-color 0.3s ease;
+  border-radius: 5px; /* Apply border-radius to submenu item */
+  width: 100%; /* Ensure it takes up full width of the submenu */
+}
+
+/* Style submenu links */
+.submenu-item a {
+  text-decoration: none;
+  font-size: 14px; /* Adjust the font size to match the smaller submenu */
+  display: block; /* Ensures the link spans the full width of the item */
+  width: 100%; /* Let the width adjust to the content */
+  padding: 5px 10px;
+  border: none; /* Remove any border on the submenu link */
+  border-radius: 5px; /* Ensure rounded corners for the link */
+}
+
+/* Add hover effect for submenu items and ensure full-width background color change */
+.submenu-item:hover {
+  background-color: rgba(255, 255, 255, 0.4); 
+  border-radius: 5px; /* Keep border-radius on hover */
+}
+
+
+/* Ensure that submenu item links have no borders on hover */
+.nav-item:hover .submenu-item a {
+  border-top: none;
+  border-bottom: none;
+}
+
+/*
+=======================================================
+=                   Header Image                      =
+=======================================================
+*/
+
+.headerImage {
+  background-size: cover;
+  min-height: 50vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  color: #fff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+  z-index: 1;
+}
+
+.headerImage .loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3%;
+  transform: translate(-50%, -50%);
+}
+
+.color-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.color-overlay h1 {
+  background-color: transparent;
+  text-align: center;
+  color: #fff;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.75);
+}
+
+.color-overlay h2 {
+  background-color: transparent;
+  text-align: center;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.75);
+}
+
+
+/*
+=======================================================
+=                      Gallery                        =
+=======================================================
+*/
+
+/* Wrapper for the image to ensure the zoom effect is contained */
+.image-zoom-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.75);
+}
+
+/* Wrapper for the image to ensure the zoom effect is contained */
+.image-zoom-wrapper-top {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px 3px 0px 0px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.75);
+}
+
+/* Zoom effect */
+.zoom-image {
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  /* Ensure the image fills the container */
+  height: 100%;
+  /* Ensure the image maintains its aspect ratio */
+  border-radius: 3px;
+}
+
+/* Zoom effect */
+.zoom-image-top {
+  transition: transform 0.3s ease-in-out;
+  width: 100%;
+  /* Ensure the image fills the container */
+  height: 100%;
+  /* Ensure the image maintains its aspect ratio */
+  border-radius: 3px 3px 0px 0px;
+}
+
+
+/* Apply zoom effect on hover */
+.image-zoom-wrapper-top:hover .zoom-image-top,
+.image-zoom-wrapper:hover .zoom-image {
+  transform: scale(1.1);
+  /* Scale the image up by 20% on hover */
+}
+
+/*
+=======================================================
+=                  Smoobu Calendar                    =
+=======================================================
+*/
+.calendarWidget a {
+  color: transparent;
+}
+
+.calendarWidget .multiCalendarWidget .singleCalendarWidget table td.current-day,
+.calendarWidget .multiCalendarWidget .singleCalendarWidget h2 table td.current-day {
+  border: 0px solid #951212 !important;
+  font-weight: bold;
+  color: #5e5e5e;
+}
+
+/*
+=======================================================
+=                    Google Maps                      =
+=======================================================
+*/
+.gmaps {
+  padding-bottom: 90%;
+  overflow: hidden;
+  height: 0;
+  position: relative;
+}
+
+
+@media (min-width: 640px) {
+  .gmaps {
+    padding-bottom: 30%;
+  }
+}
+
+.gmaps iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+=======================================================
+=                   Lazy Loading                      =
+=======================================================
+*/
+
+/* 懒加载占位符效果 */
+.lazy {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.lazy.loaded {
+  opacity: 1;
+}
+
+/* 加载中的占位符背景 */
+.lazy:not(.loaded) {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/*
+=======================================================
+=                  Article Images                     =
+=======================================================
+*/
+
+/* Container for article images with captions */
+.article-image {
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 800px; /* Maximum width for large screens */
+  width: 100%;
+}
+
+/* Image styling */
+.article-image img {
+  width: 100%;
+  max-width: 800px; /* Maximum image width */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Optional hover effect for images */
+.article-image img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Caption styling */
+.article-image .image-caption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  margin-top: 0.8rem;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .article-image {
+    max-width: 100%;
+    margin: 1.5rem auto;
+  }
+  
+  .article-image img {
+    max-width: 100%;
+  }
+  
+  .article-image .image-caption {
+    font-size: 0.85rem;
+    padding: 0 1rem;
+  }
+}
+
+/*
+=======================================================
+=                  Article Content                    =
+=======================================================
+*/
+
+/* Article title styling - make it larger, bold and centered */
+.article-title,
+article h1,
+.content h1,
+main h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--main-color);
+}
+
+/* Responsive title size */
+@media (max-width: 768px) {
+  .article-title,
+  article h1,
+  .content h1,
+  main h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Regular paragraph text for comparison */
+main p {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* Reference section styling */
+.reference-section {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #666;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+  line-height: 1.8;
+}
+
+.reference-section a {
+  color: #666;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.reference-section a:hover {
+  color: var(--main-color);
+  text-decoration: underline;
+}
+
+/* Copyright notice styling */
+.copyright-notice {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-left: 4px solid var(--main-color);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.copyright-notice h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--main-color);
+  font-size: 1.3rem;
+}
+
+.copyright-notice ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.copyright-notice li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.copyright-notice strong {
+  color: #e74c3c;
+}
+
+@media (max-width: 768px) {
+  .copyright-notice {
+    padding: 1rem 1.5rem;
+  }
+}
+
+/*
+=======================================================
+=                       Footer                        =
+=======================================================
+*/
+
+footer .nav-link:hover {
+  color: #fff;
+}
