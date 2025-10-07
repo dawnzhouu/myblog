@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const loader = document.querySelector(".loader");
 
   if (!headerImage || !loader) return;
-
   // Get image URLs from the data attributes
   const smallImg = headerImage.getAttribute("small-Image");
   const largeImg = headerImage.getAttribute("large-Image");
