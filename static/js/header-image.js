@@ -2,34 +2,49 @@ document.addEventListener("DOMContentLoaded", function () {
   const headerImage = document.querySelector(".headerImage");
   const loader = document.querySelector(".loader");
 
+  if (!headerImage || !loader) return;
+
   // Get image URLs from the data attributes
   const smallImg = headerImage.getAttribute("small-Image");
   const largeImg = headerImage.getAttribute("large-Image");
 
-  // Set default background image (small screen)
-  headerImage.style.backgroundImage = `url(${smallImg})`;
+  // Determine which image to use based on screen width
+  function getImageUrl() {
+    return window.innerWidth <= 480 ? smallImg : largeImg;
+  }
 
-  // Change background image based on screen width
-  function updateBackgroundImage() {
-    let backgroundImage;
-    if (window.innerWidth <= 480) {
-      backgroundImage = smallImg;
-    } else {
-      backgroundImage = largeImg;
-    }
+  const backgroundImage = getImageUrl();
 
-    headerImage.style.backgroundImage = `url(${backgroundImage})`;
+  // Set background image immediately (will use cached version if available)
+  headerImage.style.backgroundImage = `url(${backgroundImage})`;
 
-    const img = new Image();
-    img.src = backgroundImage;
+  // Create a new image to detect when it's loaded
+  const img = new Image();
+  
+  // Hide loader immediately if image is already cached
+  if (img.complete) {
+    loader.style.display = "none";
+  } else {
     img.onload = function () {
-      // Once the background image is loaded, hide the loader
+      loader.style.display = "none";
+    };
+    img.onerror = function () {
+      // Hide loader even if image fails to load
       loader.style.display = "none";
     };
   }
+  
+  img.src = backgroundImage;
 
-  updateBackgroundImage();
-
-  // Update background image on window resize
-  window.addEventListener("resize", updateBackgroundImage);
+  // Update background image on window resize (with debounce)
+  let resizeTimer;
+  window.addEventListener("resize", function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      const newImage = getImageUrl();
+      if (headerImage.style.backgroundImage.indexOf(newImage) === -1) {
+        headerImage.style.backgroundImage = `url(${newImage})`;
+      }
+    }, 250);
+  });
 });
