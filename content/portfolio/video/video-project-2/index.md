@@ -26,12 +26,18 @@ image: "video-thumbnail-2.jpg"
 ### 🎬 视频内容
 
 <div style="max-width: 800px; margin: 20px auto;">
-  <video controls width="100%" preload="metadata" style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+  <video 
+    controls 
+    width="100%" 
+    preload="none"
+    poster="video-thumbnail-2.jpg"
+    style="border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+  >
     <source src="video-2.mp4" type="video/mp4">
     您的浏览器不支持视频播放。请尝试使用 Chrome、Firefox 或 Safari 浏览器。
   </video>
   <p style="font-size: 0.9em; color: #666; margin-top: 10px;">
-    💡 提示：视频较大(41MB)，首次加载可能需要几秒钟。如无法播放，请检查网络连接或<a href="video-2.mp4" download>直接下载视频</a>。
+    💡 提示：视频大小 41MB，点击播放后开始加载。如无法流畅播放，可以<a href="video-2.mp4" download>直接下载视频</a>观看。
   </p>
 </div>
 
