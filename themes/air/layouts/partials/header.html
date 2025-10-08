@@ -67,13 +67,25 @@
   </nav>
 
   <!-- Dynamic Header Image -->
-  {{ with .Resources.Get "featured-image.jpg" }}
-    {{ $largeImage := .Resize "960x jpg q100" }}
-    {{ $smallImage := .Resize "480x jpg q100" }}
+  {{ $featuredImage := "" }}
+  
+  <!-- First check if there's a featured_image parameter in front matter -->
+  {{ if .Params.featured_image }}
+    {{ $featuredImage = .Resources.Get .Params.featured_image }}
+  {{ end }}
+  
+  <!-- If not found, try the default featured-image.jpg -->
+  {{ if not $featuredImage }}
+    {{ $featuredImage = .Resources.Get "featured-image.jpg" }}
+  {{ end }}
+  
+  {{ if $featuredImage }}
+    {{ $largeImage := $featuredImage.Resize "960x jpg q100" }}
+    {{ $smallImage := $featuredImage.Resize "480x jpg q100" }}
     <div class="headerImage" small-Image="{{ $smallImage.RelPermalink | relURL }}"
       large-Image="{{ $largeImage.RelPermalink | relURL }}">
   {{ else }}
-    <!-- If the featured-image.jpg doesn't exist, use the default static image -->
+    <!-- If no featured image exists, use the default static image -->
     <div class="headerImage" small-Image="{{ "img/header-480.jpg" | relURL }}" large-Image="{{ "img/header-960.jpg" | relURL }}">
   {{ end }}
 

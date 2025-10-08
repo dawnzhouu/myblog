@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>文 on 你好</title>
+    <link>https://hoho-whu.github.io/myblog/portfolio/writing/</link>
+    <description>Recent content in 文 on 你好</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 06 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://hoho-whu.github.io/myblog/portfolio/writing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>点亮世界的毛孩子：用爪子刨出一线生机</title>
+      <link>https://hoho-whu.github.io/myblog/portfolio/writing/rescue-dogs/</link>
+      <pubDate>Mon, 06 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://hoho-whu.github.io/myblog/portfolio/writing/rescue-dogs/</guid>
+      <description>断裂的水泥块铺满了地面，多吉敏捷地穿梭于废墟中，用鼻尖探寻人类的踪影，用爪子刨出一线生机</description>
+    </item>
+    <item>
+      <title>光环科普：原来鸡也有GAP？</title>
+      <link>https://hoho-whu.github.io/myblog/portfolio/writing/halo-science/</link>
+      <pubDate>Mon, 06 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://hoho-whu.github.io/myblog/portfolio/writing/halo-science/</guid>
+      <description>在忙碌的现代生活中，人们渴望从快节奏中休息。而鸡，作为人类广泛饲养的动物，也需要自己的间隔年</description>
+    </item>
+    <item>
+      <title>云南行：四虎的大理故事</title>
+      <link>https://hoho-whu.github.io/myblog/portfolio/writing/yunnan-trip/</link>
+      <pubDate>Mon, 06 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://hoho-whu.github.io/myblog/portfolio/writing/yunnan-trip/</guid>
+      <description>一只金毛跨越2500公里，从山西大同到云南大理，横跨6年的心愿，往返5000公里的搬迁，只为让它健康自由地奔跑</description>
+    </item>
+  </channel>
+</rss>

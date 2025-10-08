@@ -5,7 +5,7 @@ featured_image: "/img/AM.jpg"
 
 <div class="row">
 <div class="col-md-4 mb-4">
-<img src="/img/card.jpg" alt="我的头像" class="img-fluid rounded-circle" style="width: 250px; height: 250px; object-fit: cover;">
+<img src="/myblog/img/profile.png" alt="周晓彤" class="img-fluid rounded-circle" style="width: 220px; height: 220px; object-fit: cover;">
 </div>
 <div class="col-md-8">
 
@@ -15,30 +15,28 @@ featured_image: "/img/AM.jpg"
 
 <div class="col-md-4">
 <h3>简介</h3>
-<p>你好，我是一名热爱创作的多媒体艺术家。我专注于通过不同的艺术媒介来表达情感和思想，包括视觉艺术、文字创作和影像制作。</p>
-<p>我相信艺术是连接人心的桥梁，每一件作品都承载着独特的故事和情感。</p>
+<p>"一年级"内容策划人，期待用文字、图像、影音与每一个你链接。</p>
 </div>
 
 <div class="col-md-4">
 <h3>经历</h3>
 <h5>教育经历</h5>
-<p><strong>XX艺术学院</strong><br>
-视觉传达设计学士<br>
-2020-2024</p>
+<p><strong>武汉大学文学院</strong><br>
+汉语言文学专业<br>
+2018-2022</p>
 
 <h5>工作经历</h5>
-<p><strong>创意设计工作室</strong><br>
-多媒体设计师<br>
-2024至今</p>
+<p><strong>深圳派菲爱宠贸易有限公司</strong><br>
+2024-2025</p>
 </div>
 
 <div class="col-md-4">
 <h3>联系方式</h3>
 <p><strong>邮箱</strong><br>
-xiaotong@example.com</p>
+dawnzhouu@163.com</p>
 
 <p><strong>微信号</strong><br>
-xiaotong_art</p>
+zaixiatianho</p>
 </div>
 
 </div>

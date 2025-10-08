@@ -1,5 +1,7 @@
 <div class="row" data-masonry='{"percentPosition": true}'>
   {{ $images := .Resources.ByType "image" }}
+  {{ $images = sort $images "Name" }}
+  {{ $images = where $images "Name" "!=" "featured-image.jpg" }}
   {{ range $images }}
 
   {{ $image := .Resize "960x webp" }}
@@ -14,7 +16,10 @@
             <img class="card-img zoom-image lazy" 
                  data-src="{{ $img_tmb.RelPermalink }}" 
                  src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3C/svg%3E"
-                 alt="Gallery">
+                 alt="Gallery"
+                 oncontextmenu="return false;"
+                 ondragstart="return false;"
+                 style="user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;">
           </a>
         </div>
       </div>
@@ -41,15 +46,31 @@
   window.addEventListener('load', function() {
     var grid = document.querySelector('.row');
 
-    // Initialize Masonry
+    // Initialize Masonry with horizontal order
     window.msnry = new Masonry(grid, {
       itemSelector: '.col-12',
       percentPosition: true,
+      horizontalOrder: true  // 保持原始顺序
     });
 
     // Use imagesLoaded to ensure Masonry only runs after images have loaded
     imagesLoaded(grid, function() {
       window.msnry.layout(); // Recalculate layout once images are fully loaded
+    });
+
+    // 禁止所有图片右键和拖拽
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+      }
     });
   });
 </script>

@@ -17,7 +17,13 @@
           {{ $cardImage = $.Resources.Get . }}
         {{ end }}
         {{ if not $cardImage }}
-          {{ $cardImage = .Resources.Get "featured-image.jpg" | or (.Resources.Get "card.jpg") }}
+          {{ $cardImage = .Resources.Get "card.png" }}
+        {{ end }}
+        {{ if not $cardImage }}
+          {{ $cardImage = .Resources.Get "card.jpg" }}
+        {{ end }}
+        {{ if not $cardImage }}
+          {{ $cardImage = .Resources.Get "featured-image.jpg" }}
         {{ end }}
         {{ if $cardImage }}
           {{ $image := $cardImage.Resize "400x"}}
@@ -34,7 +40,6 @@
         <a href="{{ .RelPermalink }}">
           <h5 class="card-title main-color">{{ .Title }}</h5>
         </a>
-        <p class="card-text catchline">{{ .Params.catchline }}</p>
         <a href="{{ .RelPermalink }}" class="btn main-color ">
           {{ with .Params.button }}
           {{ . }}
