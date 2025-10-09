@@ -2,6 +2,7 @@
   {{ $images := .Resources.ByType "image" }}
   {{ $images = sort $images "Name" }}
   {{ $images = where $images "Name" "!=" "featured-image.jpg" }}
+  {{ $images = where $images "Name" "!=" "card.jpg" }}
   {{ range $images }}
 
   {{ $image := .Resize "960x webp" }}

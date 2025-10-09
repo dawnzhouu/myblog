@@ -3,7 +3,7 @@ title: ""
 featured_image: "/img/SC.jpg"
 ---
 
-# 📊 小红书运营案例
+# 小红书运营案例
 
 <div class="container mt-5">
 
